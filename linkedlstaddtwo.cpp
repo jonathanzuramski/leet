@@ -18,45 +18,47 @@ void printLst(ListNode *lst) {
     cout << lst->val << endl;
 }
 
-ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
-    int x = 0;
-    int y = 0;
-    
-    ListNode *head = new ListNode(l1->val + l2->val);
-    ListNode *currNode = head; 
-    l1 = l1->next;
-    l2 = l2->next;
-
-    while (l1 != nullptr || l2 != nullptr) {
-        if (l1 == nullptr) {
-            x = 0;
-        } else {
-            x = l1->val;
-        }
-        if (l2 == nullptr) {
-            y = 0;
-        } else {
-            y = l2->val;
-        }
-
-        int val = x + y; 
-
-        if(val >= 10) {
-            currNode->val = currNode->val + 1; 
-            val = val % 10; 
-        }
-        currNode->next = new ListNode(val);
-        currNode = currNode->next;
-        l2 = l2->next;
-        l1 = l1->next;
+ListNode* nextNode(ListNode *node) {
+    if(node == nullptr) { 
+        return nullptr;
+    } else {
+        return node->next;
     }
-    return head;
+}
+ 
+int nodeVal(ListNode *node) { 
+    if(node == nullptr) { 
+        return 0;
+    } else { 
+        return node->val;
+    }
+}
+
+ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+ 
+        ListNode *head = new ListNode;   
+        ListNode *curr = head; 
+        int value = 0;
+
+        while(l1 != nullptr || l2 != nullptr || value/10 != 0) { 
+
+            value = value/10 + nodeVal(l1) + nodeVal(l2); 
+            l1 = nextNode(l1); 
+            l2 = nextNode(l2);
+            curr->next = new ListNode(value % 10);
+            curr = curr->next;
+        }
+        return head->next; 
 }
 
 int main() {
 
-    ListNode l1(2, new ListNode(4, new ListNode(3)));
-    ListNode l2(5, new ListNode(6, new ListNode(4)));
+    //ListNode l1(5);
+    //ListNode l2(5);
+    //ListNode l1(6, new ListNode(4, new ListNode(3)));
+    //ListNode l2(6, new ListNode(6, new ListNode(4)));
+    ListNode l1(6);
+    ListNode l2(6, new ListNode(6, new ListNode(4)));
 
     ListNode *results = addTwoNumbers(&l1, &l2);
 

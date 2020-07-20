@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "xhash": "cpp",
+        "unordered_set": "cpp",
+        "iostream": "cpp",
+        "initializer_list": "cpp",
+        "list": "cpp",
+        "type_traits": "cpp",
+        "vector": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Enabled",
+    "python.pythonPath": "C:\\Users\\jonni\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
+}
